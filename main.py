@@ -92,7 +92,11 @@ def op2():
 
         chance = int(amountCases) / int(population)
         chance = chance * 100
-        final = final * chance
+
+        if i == 0:
+            final = chance
+        else:
+            final = final * chance
         print('Your chance of catching covid is about ', chance, ' Percent')
 
     chance = round(chance, 2)
