@@ -47,6 +47,7 @@ def op1():
     loc.clear()
     loc.append(location)
 
+
     for k in citys:
         if (loc[0].lower() == k[3].lower()) or (loc[0].lower() == k[0].lower()):
             loc[0] = k[3].lower()
@@ -57,10 +58,13 @@ def op1():
         if loc[0].lower() == j[0].lower():
             amountCases = int(j[1])
 
-    chance = int(amountCases) / int(population)
-    chance = chance * 100
-    chance = round(chance, 2)
-    print('Your chance of catching covid is about ', chance, ' Percent')
+    try:
+        chance = int(amountCases) / int(population)
+        chance = chance * 100
+        chance = round(chance, 2)
+        print('Your chance of catching covid is about ', chance, ' Percent')
+    except ZeroDivisionError:
+        print('Sorry your location was not found in our data...')
 
 
 # This is for multiple locations
@@ -76,13 +80,16 @@ def op2():
     while boo:
         count += 1
         print('if you do not have a next stop enter q: ')
-        location = input('Where is you #' + str(count) + ' stop: ')
+        location = input('Where is your #' + str(count) + ' stop: ')
         loc.append(location)
         if location == 'q':
             boo = False
 
 
     for i in range(0, len(loc) - 1):
+        amountCases = 0
+        population = 0
+        chance = 0
         for k in citys:
             if (loc[i].lower() == k[3].lower()) or (loc[i].lower() == k[0].lower()):
                 loc[i] = k[3].lower()
@@ -92,20 +99,25 @@ def op2():
         for j in impCases:
             if loc[i].lower() == j[0].lower():
                 amountCases = int(j[1])
+        try:
+            chance = int(amountCases) / int(population)
+            chances.append(chance)
+            chance = chance * 100
+            chance = round(chance, 2)
+            print('Your chance of catching covid at ', loc[i], ' is about ', chance, ' Percent')
+        except ZeroDivisionError:
+            print('Sorry your location was not found in our data...')
 
-        chance = int(amountCases) / int(population)
-        chance = chance * 100
-        chance = round(chance, 2)
-        chances.append(chance)
 
-        print('Your chance of catching covid at ', loc[i], ' is about ', chance, ' Percent')
-
-    chance = 1
+    chance = 0
     for i in chances:
-        chance = chance * i
-    chance = round(chance, 2)
+        chance = chance + i
 
+    chance = chance / len(chances)
+    chance = chance * 100
+    chance = round(chance, 2)
     print('Your overall chance of catching covid is about ', chance, ' percent')
+
 
 
 loo = True
