@@ -71,6 +71,8 @@ def op2():
     boo = True
     count = 0
     final = 0
+    chances = []
+    loc.clear()
     while boo:
         count += 1
         print('if you do not have a next stop enter q: ')
@@ -82,29 +84,28 @@ def op2():
 
     for i in range(0, len(loc) - 1):
         for k in citys:
-            if (i == k[3]) or (i == k[0]):
-                i = k[3]
+            if (loc[i].lower() == k[3].lower()) or (loc[i].lower() == k[0].lower()):
+                loc[i] = k[3].lower()
         for k in citys:
-            if (i == k[3]):
+            if (loc[i].lower() == k[3].lower()):
                 population = population + int(k[6])
         for j in impCases:
-            if i == j[0]:
+            if loc[i].lower() == j[0].lower():
                 amountCases = int(j[1])
 
         chance = int(amountCases) / int(population)
         chance = chance * 100
+        chance = round(chance, 2)
+        chances.append(chance)
 
-        if i == 0:
-            final = chance
-        else:
-            final = final * chance
-        print('Your chance of catching covid is about ', chance, ' Percent')
+        print('Your chance of catching covid at ', loc[i], ' is about ', chance, ' Percent')
 
+    chance = 1
+    for i in chances:
+        chance = chance * i
     chance = round(chance, 2)
 
-
-
-
+    print('Your overall chance of catching covid is about ', chance, ' percent')
 
 
 loo = True
