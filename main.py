@@ -44,13 +44,14 @@ def op1():
     population = 0
     chance = 0
     location = input('enter your location: ')
+    loc.clear()
     loc.append(location)
 
     for k in citys:
         if (loc[0].lower() == k[3].lower()) or (loc[0].lower() == k[0].lower()):
             loc[0] = k[3].lower()
     for k in citys:
-        if (loc[0].lower() == k[3].lower):
+        if (loc[0].lower() == k[3].lower()):
             population = population + int(k[6])
     for j in impCases:
         if loc[0].lower() == j[0].lower():
