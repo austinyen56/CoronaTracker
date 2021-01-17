@@ -47,6 +47,7 @@ def op1():
     loc.clear()
     loc.append(location)
 
+
     for k in citys:
         if (loc[0].lower() == k[3].lower()) or (loc[0].lower() == k[0].lower()):
             loc[0] = k[3].lower()
@@ -57,10 +58,13 @@ def op1():
         if loc[0].lower() == j[0].lower():
             amountCases = int(j[1])
 
-    chance = int(amountCases) / int(population)
-    chance = chance * 100
-    chance = round(chance, 2)
-    print('Your chance of catching covid is about ', chance, ' Percent')
+    try:
+        chance = int(amountCases) / int(population)
+        chance = chance * 100
+        chance = round(chance, 2)
+        print('Your chance of catching covid is about ', chance, ' Percent')
+    except ZeroDivisionError:
+        print('Sorry your location was not found in our data...')
 
 
 # This is for multiple locations
@@ -71,39 +75,48 @@ def op2():
     boo = True
     count = 0
     final = 0
+    chances = []
+    loc.clear()
     while boo:
         count += 1
         print('if you do not have a next stop enter q: ')
-        location = input('Where is you #' + str(count) + ' stop: ')
+        location = input('Where is your stop # ' + str(count) + ': ')
         loc.append(location)
         if location == 'q':
             boo = False
 
 
     for i in range(0, len(loc) - 1):
+        amountCases = 0
+        population = 0
+        chance = 0
         for k in citys:
-            if (i == k[3]) or (i == k[0]):
-                i = k[3]
+            if (loc[i].lower() == k[3].lower()) or (loc[i].lower() == k[0].lower()):
+                loc[i] = k[3].lower()
         for k in citys:
-            if (i == k[3]):
+            if (loc[i].lower() == k[3].lower()):
                 population = population + int(k[6])
         for j in impCases:
-            if i == j[0]:
+            if loc[i].lower() == j[0].lower():
                 amountCases = int(j[1])
+        try:
+            chance = int(amountCases) / int(population)
+            chances.append(chance)
+            chance = chance * 100
+            chance = round(chance, 2)
+            print('Your chance of catching covid at ', loc[i], ' is about ', chance, ' Percent')
+        except ZeroDivisionError:
+            print('Sorry your location was not found in our data...')
 
-        chance = int(amountCases) / int(population)
-        chance = chance * 100
 
-        if i == 0:
-            final = chance
-        else:
-            final = final * chance
-        print('Your chance of catching covid is about ', chance, ' Percent')
+    chance = 0
+    for i in chances:
+        chance = chance + i
 
+    chance = chance / len(chances)
+    chance = chance * 100
     chance = round(chance, 2)
-
-
-
+    print('Your overall chance of catching covid is about ', chance, ' percent')
 
 
 
@@ -116,7 +129,7 @@ while loo:
     if user == 1:
         op1()
         try:
-            user = int(input('press 3 to quit... press anything else to continue'))
+            user = int(input('press 3 to quit... press anything else to continue: '))
         except ValueError:
             loo = True
         try:
@@ -127,7 +140,7 @@ while loo:
     elif user == 2:
         op2()
         try:
-            user = int(input('press 3 to quit... press anything else to continue'))
+            user = int(input('press 3 to quit... press anything else to continue: '))
         except ValueError:
             loo = True
         try:
@@ -138,7 +151,7 @@ while loo:
     else:
         print('Invalid option input... Try again')
         try:
-            user = int(input('press 3 to quit... press anything else to continue'))
+            user = int(input('press 3 to quit... press anything else to continue: '))
         except ValueError:
             loo = True
         try:
