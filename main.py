@@ -80,7 +80,7 @@ def op2():
     while boo:
         count += 1
         print('if you do not have a next stop enter q: ')
-        location = input('Where is your #' + str(count) + ' stop: ')
+        location = input('Where is your stop # ' + str(count) + ': ')
         loc.append(location)
         if location == 'q':
             boo = False
@@ -129,7 +129,7 @@ while loo:
     if user == 1:
         op1()
         try:
-            user = int(input('press 3 to quit... press anything else to continue'))
+            user = int(input('press 3 to quit... press anything else to continue: '))
         except ValueError:
             loo = True
         try:
@@ -140,7 +140,7 @@ while loo:
     elif user == 2:
         op2()
         try:
-            user = int(input('press 3 to quit... press anything else to continue'))
+            user = int(input('press 3 to quit... press anything else to continue: '))
         except ValueError:
             loo = True
         try:
@@ -151,7 +151,7 @@ while loo:
     else:
         print('Invalid option input... Try again')
         try:
-            user = int(input('press 3 to quit... press anything else to continue'))
+            user = int(input('press 3 to quit... press anything else to continue: '))
         except ValueError:
             loo = True
         try:
