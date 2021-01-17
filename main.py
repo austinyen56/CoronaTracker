@@ -20,7 +20,7 @@ loc = []
 
 with open(city, 'r') as csvfile:
     csvreader = csv.reader(csvfile)
-    fields = next(csvreader)
+    allInfo = next(csvreader)
     for row in csvreader:
          citys.append(row)
 
