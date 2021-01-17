@@ -30,13 +30,13 @@ with open(cases, 'r') as csvfileInfo:
     for row in csvreader:
         rowCases.append(row)
 
-# This is importing all the individual county cases to impCases
+
 for i in range(0, len(rowCases)):
     try:
         if rowCases[i+1][0] != rowCases[i][0]:
             impCases.append(rowCases[i])
     except IndexError:
-        impCases.append(len(rowCases) - 1)
+        impCases.append(rowCases[i - 1])
 
 # This is for only one location
 def op1():
@@ -46,15 +46,18 @@ def op1():
     location = input('enter your location: ')
     loc.append(location)
 
-    for i in citys:
-        if loc[0] is i[3]:
-            population = i[6]
-    for i in impCases:
-        if loc[0] is i[0]:
-            cases = i[1]
+    for k in citys:
+        if loc[0] == k[3]:
+            population = population + int(k[6])
+    for j in impCases:
+        if loc[0] == j[0]:
+            amountCases = int(j[1])
 
-    chance = amountCases/population
+    chance = int(amountCases) / int(population)
+    chance = chance * 100
+    chance = round(chance, 2)
     print('Your chance of catching covid is about ', chance, ' Percent')
+
 
 # This is for multiple locations
 def op2():

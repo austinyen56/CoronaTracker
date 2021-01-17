@@ -3,6 +3,7 @@
 
 import csv
 
+
 city = "uscities.csv"
 cases = "county_cases.csv"
 
@@ -61,13 +62,14 @@ loc.append(location)
 
 for i in citys:
     if loc[0] == i[3]:
-        population = i[6]
+        population = population + int(i[6])
 
 for i in impCases:
     if loc[0] == i[0]:
         amountCases = int(i[1])
 
-print(int(amountCases), int(population))
-chance = int(amountCases) // int(population)
+chance = int(amountCases) / int(population)
+chance = chance * 100
+chance = round(chance, 2)
 print('Your chance of catching covid is about ', chance, ' Percent')
 
