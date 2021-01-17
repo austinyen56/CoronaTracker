@@ -47,7 +47,10 @@ def op1():
     loc.append(location)
 
     for k in citys:
-        if loc[0] == k[3]:
+        if (loc[0] == k[3]) or (loc[0] == k[0]):
+            loc[0] = k[3]
+    for k in citys:
+        if (loc[0] == k[3]):
             population = population + int(k[6])
     for j in impCases:
         if loc[0] == j[0]:
@@ -61,15 +64,42 @@ def op1():
 
 # This is for multiple locations
 def op2():
+    amountCases = 0
+    population = 0
+    chance = 0
     boo = True
     count = 0
+    final = 0
     while boo:
         count += 1
-        print('if you do not have a next stop enter q')
-        location = input('Where is you #' + str(count) + ' stop')
+        print('if you do not have a next stop enter q: ')
+        location = input('Where is you #' + str(count) + ' stop: ')
         loc.append(location)
         if location == 'q':
             boo = False
+
+
+    for i in range(0, len(loc) - 1):
+        for k in citys:
+            if (i == k[3]) or (i == k[0]):
+                i = k[3]
+        for k in citys:
+            if (i == k[3]):
+                population = population + int(k[6])
+        for j in impCases:
+            if i == j[0]:
+                amountCases = int(j[1])
+
+        chance = int(amountCases) / int(population)
+        chance = chance * 100
+        final = final * chance
+        print('Your chance of catching covid is about ', chance, ' Percent')
+
+    chance = round(chance, 2)
+
+
+
+
 
 
 loo = True
