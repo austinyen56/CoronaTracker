@@ -4,7 +4,7 @@
 
 import csv
 
-city = "uscities.csv"
+city = "CAcities.csv"
 cases = "county_cases.csv"
 
 allInfo = []
@@ -47,13 +47,13 @@ def op1():
     loc.append(location)
 
     for k in citys:
-        if (loc[0] == k[3]) or (loc[0] == k[0]):
-            loc[0] = k[3]
+        if (loc[0].lower() == k[3].lower()) or (loc[0].lower() == k[0].lower()):
+            loc[0] = k[3].lower()
     for k in citys:
-        if (loc[0] == k[3]):
+        if (loc[0].lower() == k[3].lower):
             population = population + int(k[6])
     for j in impCases:
-        if loc[0] == j[0]:
+        if loc[0].lower() == j[0].lower():
             amountCases = int(j[1])
 
     chance = int(amountCases) / int(population)
