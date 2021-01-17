@@ -114,16 +114,34 @@ while loo:
 
     if user == 1:
         op1()
-        user = int(input('press 3 to quit... press anything else to continue'))
-        if user == 3:
-            loo = False
+        try:
+            user = int(input('press 3 to quit... press anything else to continue'))
+        except ValueError:
+            loo = True
+        try:
+            if user == 3:
+                loo = False
+        except ValueError:
+            loo = True
     elif user == 2:
         op2()
-        user = int(input('press 3 to quit... press anything else to continue'))
-        if user == 3:
-            loo = False
+        try:
+            user = int(input('press 3 to quit... press anything else to continue'))
+        except ValueError:
+            loo = True
+        try:
+            if user == 3:
+                loo = False
+        except ValueError:
+            loo = True
     else:
         print('Invalid option input... Try again')
-        user = int(input('press 3 to quit... press anything else to continue'))
-        if user == 3:
-            loo = False
+        try:
+            user = int(input('press 3 to quit... press anything else to continue'))
+        except ValueError:
+            loo = True
+        try:
+            if user == 3:
+                loo = False
+        except ValueError:
+            loo = True
