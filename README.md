@@ -32,6 +32,10 @@ color in/ shade/highlight states or cities and show corona stats
 
 * Create waypoints/ show nearest pharmacy or hospital to get vaxxinated
 
+* More dense areas = higher chance of corona??
+
+* Account for day stayed? 14 days later no symptom == - half chance of having it?
+
 * Make it an android app??
 
 Reference for [bootstrap icons](https://getbootstrap.com/docs/3.3/components/)
