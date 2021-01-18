@@ -3,6 +3,7 @@
 # covid approximation meter
 
 import csv
+import Corona_Tracker
 
 city = "CAcities.csv"
 cases = "county_cases.csv"
@@ -30,7 +31,6 @@ with open(cases, 'r') as csvfileInfo:
     for row in csvreader:
         rowCases.append(row)
 
-
 for i in range(0, len(rowCases)):
     try:
         if rowCases[i+1][0] != rowCases[i][0]:
@@ -39,12 +39,18 @@ for i in range(0, len(rowCases)):
         impCases.append(rowCases[i - 1])
 
 # This is for only one location
+
 def op1():
     amountCases = 0
     population = 0
     chance = 0
-    location = input('enter your location: ')
+    Corona_Tracker.staticLoc()
+    #location = input('enter your location: ')
+
+    location = Corona_Tracker.staticLoc.locationtomain
     loc.clear()
+    #print("What main.py is taking in for location",location)
+
     loc.append(location)
 
 
@@ -62,9 +68,9 @@ def op1():
         chance = int(amountCases) / int(population)
         chance = chance * 100
         chance = round(chance, 2)
-        print('Your chance of catching covid is about ', chance, ' Percent')
+        print('\nYour chance of catching covid is about ', chance, ' Percent')
     except ZeroDivisionError:
-        print('Sorry your location was not found in our data...')
+        print('\nSorry your location was not found in our data...')
 
 
 # This is for multiple locations
@@ -119,7 +125,6 @@ def op2():
     print('Your overall chance of catching covid is about ', chance, ' percent')
 
 
-
 loo = True
 while loo:
     print('Option 1: You are not traveling')
@@ -129,7 +134,7 @@ while loo:
     if user == 1:
         op1()
         try:
-            user = int(input('press 3 to quit... press anything else to continue: '))
+            user = int(input('Press 3 to quit... Press anything else to continue: '))
         except ValueError:
             loo = True
         try:
