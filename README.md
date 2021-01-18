@@ -40,6 +40,14 @@ color in/ shade/highlight states or cities and show corona stats
 
 Reference for [bootstrap icons](https://getbootstrap.com/docs/3.3/components/)
 
+https://www.geeksforgeeks.org/python-fetch-nearest-hospital-locations-using-googlemaps-api/
+
+https://www.youtube.com/watch?v=HChq5_7yTGk&ab_channel=JieJenn
+
+https://stackoverflow.com/questions/60578408/is-it-possible-to-draw-paths-in-folium
+
+https://www.gps-coordinates.net/
+
 Remember to change repo name to CoronaTracker_old
 
 
