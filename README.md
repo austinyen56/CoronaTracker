@@ -36,7 +36,7 @@ color in/ shade/highlight states or cities and show corona stats
 
 * Account for day stayed? 14 days later no symptom == - half chance of having it?
 
-* Make it an android app??
+* Make it an android app?? .exe??
 
 Reference for [bootstrap icons](https://getbootstrap.com/docs/3.3/components/)
 
@@ -47,6 +47,8 @@ https://www.youtube.com/watch?v=HChq5_7yTGk&ab_channel=JieJenn
 https://stackoverflow.com/questions/60578408/is-it-possible-to-draw-paths-in-folium
 
 https://www.gps-coordinates.net/
+
+https://www.youtube.com/watch?v=UZX5kH72Yx4&ab_channel=TechWithTim
 
 Remember to change repo name to CoronaTracker_old
 
